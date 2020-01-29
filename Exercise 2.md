@@ -1,6 +1,6 @@
 **Exercise 2.1**
 
-*In ![equation](https://latex.codecogs.com/png.latex?\varepsilon)-greedy action selection, for the case of two actions and " = 0.5, what is
+*In ![equation](https://latex.codecogs.com/png.latex?\varepsilon)-greedy action selection, for the case of two actions and ![equation](https://latex.codecogs.com/png.latex?\varepsilon) = 0.5, what is
 the probability that the greedy action is selected?*
 
 ![equation](https://latex.codecogs.com/png.latex?P(greedy)&space;=&space;P(pick\,greedy|exploit)P(exploit)&space;&plus;&space;P(pick\,greedy|exploration)P(exploration)\newline~~~~~~~~~~~~~~~~~~~&space;=&space;1*(1-\varepsilon)&space;&plus;&space;\frac{1}{A}*\varepsilon\newline~~~~~~~~~~~~~~~~~~~&space;=&space;1&space;-&space;\frac{(A&space;-&space;1)}{A}\varepsilon)
