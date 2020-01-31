@@ -47,7 +47,10 @@ class Bandit:
     # resets the bandit. Initial state.
     def reset(self):
         # Real reward for each action
-        self.q_true =  np.full(self.k, self.true_reward)
+        if self.stationary:
+            self.q_true = np.random.randn(self.k)
+        else:
+            self.q_true =  np.full(self.k, self.true_reward)
         # Reward estimation for each action
         self.q_estimation = np.zeros(self.k) + self.initial
         # What the best action given the current q_tue is.
