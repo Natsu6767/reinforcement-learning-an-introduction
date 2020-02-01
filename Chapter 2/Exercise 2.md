@@ -49,3 +49,20 @@ The ![equation](https://latex.codecogs.com/png.latex?\varepsilon)-greedy method 
 If we take constant α for each time step, the expression becomes:
 
 ![equation](https://latex.codecogs.com/png.latex?Q_{n&plus;1}&space;=&space;Q_{1}(1&space;-&space;\alpha)^{n}&space;&plus;&space;\alpha\sum_{i&space;=&space;1}^{n}(1&space;-&space;\alpha)^{n&space;-&space;1}R_{i})
+
+
+
+**Exercise 2.6: Mysterious Spikes**
+
+*The results shown in Figure 2.3 should be quite reliable because they are averages over 2000 individual, randomly chosen 10-armed bandit tasks. Why, then, are there oscillations and spikes in the early part of the curve for the optimistic method? In other words, what might make this method perform particularly better or worse, on average, on particular early steps?*
+
+In the optimistic method all the unique actions end up getting explored fast since our initial estimation of the rewards are too high. When an action is selected, the update to our estimation for the selected action gets reduced significantly. Therefore, even greedy methods end up exploring. Once all the actions have been explored, the action with the here true reward gets selected more frequently. Since, most of the 2000 agents finish exploring around the same time, they start selecting the same action with the highest true reward. This causes a spike in the early part of the curve. As this action gets selected multiple times, our reward estimation of it reduces. This results in another action having a higher reward estimate and that action now gets selected albeit, by lesser number of the 2000 agents (greater chance that a different action is selected by different agents due to the sampling step in getting the true reward). This continues for multiple actions and causes the oscillations and spikes in the early part of the curve.
+
+
+
+**Exercise 2.8: UCB Spikes**
+
+*In Figure 2.4 the UCB algorithm shows a distinct spike in performance on the 11th step. Why is this? Note that for your answer to be fully satisfactory it must explain both why the reward increases on the 11th step and why it decreases on the subsequent steps. Hint: if c = 1, then the spike is less prominent.*
+
+The UCB algorithm forces the agents to explore all the actions at least once. In the first 10 steps, the agents try out all the different unique 10 actions. This results in having created new reward estimations for the actions in which one action clearly has the higher reward estimate on average (the action with the highest true reward mean). Since the count of each action having occurred is the same i.e. 1, and the time step is also the same i.e. 10, only the first term in the UCB algorithm is used to decide which action to be chosen. Since this is just the reward estimations for the action, the action with the highest reward is chosen. All 2000 agents, on average, also pick the same action, causing the spike in performance on the 11th step.
+
