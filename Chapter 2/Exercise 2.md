@@ -66,3 +66,36 @@ In the optimistic method all the unique actions end up getting explored fast sin
 
 The UCB algorithm forces the agents to explore all the actions at least once. In the first 10 steps, the agents try out all the different unique 10 actions. This results in having created new reward estimations for the actions in which one action clearly has the higher reward estimate on average (the action with the highest true reward mean). Since the count of each action having occurred is the same i.e. 1, and the time step is also the same i.e. 10, only the first term in the UCB algorithm is used to decide which action to be chosen. Since this is just the reward estimations for the action, the action with the highest reward is chosen. All 2000 agents, on average, also pick the same action, causing the spike in performance on the 11th step.
 
+
+
+**Exercise 2.9**
+
+*Show that in the case of two actions, the soft-max distribution is the same as that given by the logistic, or sigmoid, function often used in statistics and artificial neural networks.*
+
+For two actions ***a*** and ***b***. The probability of the action ***a*** occurring using the soft-max distribution is:
+
+![equation](https://latex.codecogs.com/png.latex?P%28A_%7Bt%7D%3Da%29%20%3D%20%5Cfrac%7Be%5E%7BH_%7Bt%7D%28a%29%7D%7D%7Be%5E%7BH_%7Bt%7D%28a%29%7D%20&plus;%20e%5E%7BH_%7Bt%7D%28b%29%7D%7D)
+
+Now, using the property of soft-max, which allows us to subtract some quantity from the parameters and the predictions still remains the same. Hence, subtracting ![equation](https://latex.codecogs.com/png.latex?H_%7Bt%7D%28b%29) from both the parameters, we get:
+
+![equation](https://latex.codecogs.com/png.latex?P%28A_%7Bt%7D%3Da%29%20%3D%20%5Cfrac%7Be%5E%7BH_%7Bt%7D%28a%29%20-%20H_%7Bt%7D%28b%29%7D%7D%7Be%5E%7BH_%7Bt%7D%28a%29%20-%20H_%7Bt%7D%28b%29%7D%20&plus;%20e%5E%7BH_%7Bt%7D%28b%29%20-%20H_%7Bt%7D%28b%29%7D%7D%5C%5C%20%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%3D%20%5Cfrac%7Be%5E%7B%28H_%7Bt%7D%28a%29%20-%20H_%7Bt%7D%28b%29%29%7D%7D%7Be%5E%7B%28H_%7Bt%7D%28a%29%20-%20H_%7Bt%7D%28b%29%29%7D%20&plus;%20e%5E%7B0%7D%7D%5C%5C%20%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%3D%20%5Cfrac%7Be%5E%7B%5Ctheta_%7Bt%7D%20%7D%7D%7Be%5E%7B%5Ctheta_%7Bt%7D%7D%20&plus;%201%7D%7E%7E%7E%7E%3B%20%5Ctheta_%7Bt%7D%20%3D%20e%5E%7B%28H_%7Bt%7D%28a%29%20-%20H_%7Bt%7D%28b%29%29%7D%5C%5C%20%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%3D%20%5Cfrac%7B1%7D%7B1%20&plus;%20e%5E%7B-%5Ctheta_%7Bt%7D%7D%7D)
+
+Hence, we obtain the sigmoid function.
+
+
+
+**Exercise 2.10**
+
+*Suppose you face a 2-armed bandit task whose true action values change randomly from time step to time step. Specifically, suppose that, for any time step, the true values of actions 1 and 2 are respectively 0.1 and 0.2 with probability 0.5 (case A), and 0.9 and 0.8 with probability 0.5 (case B). If you are not able to tell which case you face at any step, what is the best expectation of success you can achieve and how should you behave to achieve it? Now suppose that on each step you are told whether you are facing case A or case B (although you still don’t know the true action values). This is an associative search task. What is the best expectation of success you can achieve in this task, and how should you behave to achieve it?*
+
+If we are not able to tell which case we face:
+
+Expected reward on selecting Action 1 always: ![equation](https://latex.codecogs.com/png.latex?0.5\times0.1&space;&plus;&space;0.5\times0.9&space;=&space;0.5)
+
+Expected reward on Selecting Action 2 always: ![equation](https://latex.codecogs.com/png.latex?0.5\times0.2&space;&plus;&space;0.5\times0.8&space;=&space;0.5)
+
+Since both actions have the same value estimates, any action can be selected and on average we would get the same reward ultimately.
+
+If we are told which case we are facing, it makes sense to always chose the action that gives the highest reward for each case. For Case A that would be Action 2 and for Case B that would be Action 1.
+
+The expected reward would then be: ![equation](https://latex.codecogs.com/png.latex?0.5\times0.2&space;&plus;&space;0.5\times0.9&space;=&space;0.55)
