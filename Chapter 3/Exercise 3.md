@@ -98,7 +98,58 @@ Hence the expectation of ![equation](https://latex.codecogs.com/png.latex?R_%7Bt
 
 ## Exercise 3.12
 
-Give an equation for ![equation](https://latex.codecogs.com/png.latex?v_%7B%5Cpi%7D) in terms of ![equation](https://latex.codecogs.com/png.latex?q_%7B%5Cpi%7D) and ![equation](https://latex.codecogs.com/png.latex?%5Cpi).
+*Give an equation for ![equation](https://latex.codecogs.com/png.latex?v_%7B%5Cpi%7D) in terms of ![equation](https://latex.codecogs.com/png.latex?q_%7B%5Cpi%7D) and ![equation](https://latex.codecogs.com/png.latex?%5Cpi).*
 
 ![equation](https://latex.codecogs.com/png.latex?v_%7B%5Cpi%7D%20%3D%20%5Csum_%7Ba%20%5Cin%20A%28s%29%7D%5Cpi%28a%20%7C%20s%29%20q_%7B%5Cpi%7D%28a%2C%20s%29)
 
+## Exercise 3.13
+
+*Give an equation for ![equation](https://latex.codecogs.com/png.latex?q_%7B%5Cpi%7D) in terms of ![equation](https://latex.codecogs.com/png.latex?v_%7B%5Cpi%7D) and the four-argument ![equation](https://latex.codecogs.com/png.latex?p).*
+
+We can write the expected value of taking action ***a*** from state ***s*** as:
+
+![equation](https://latex.codecogs.com/png.latex?q%28s%2C%20a%29%20%3D%20%5Cmathbb%7BE%7D%5BS_%7Bt%7D%20%7C%20S_%7Bt-1%7D%3Ds%2C%20A_%7Bt-1%7D%3Da%5D)
+
+We are following a policy ![equation](https://latex.codecogs.com/png.latex?%5Cpi). Using the four-argument ![equation](https://latex.codecogs.com/png.latex?p):
+
+![equation](https://latex.codecogs.com/png.latex?q_%7B%5Cpi%7D%28s%2C%20a%29%20%3D%20%5Csum_%7Bs%27%20%5Cin%20S%7Dv_%7B%5Cpi%7D%28s%27%29%5Csum_%7Br%20%5Cin%20R%7Dp%28s%27%2C%20r%20%7C%20s%2C%20a%29)
+
+The inner sum calculates the probability of going to a state ***s'*** from state ***s*** using action ***a***. This is then multiplied by the value function of the state ***s'***. The outer sum calculates all such products for all possible states ***S***. This by definition is the required expectation we need to calculate.
+
+## Exercise 3.14
+
+*The Bellman equation (3.14) must hold for each state for the value function ![equation](https://latex.codecogs.com/png.latex?v_%7B%5Cpi%7D) shown in Figure 3.2 (right) of Example 3.5. Show numerically that this equation holds for the center state, valued at +0.7, with respect to its four neighboring states, valued at +2.3, +0.4, -0.4 and +0.7. (These numbers are accurate only to one decimal place.)*
+
+![equation](https://latex.codecogs.com/png.latex?%5Cgamma%20%3D%200.9%5C%5C%20P%28ss%27%29%20%3D%200.5%5C%5C%20R_%7Bss%27%7D%20%3D%200%2C%7E%7E%7E%7E%20%5Cforall%20s%27%20%5Cin%20%5Ctextrm%7Bthe%20given%20neighboring%20states.%7D)
+
+![equation](https://latex.codecogs.com/png.latex?v_%7B%5Cpi%7D%20%3D%200.5%20%5Ctimes%200.9%20%5Ctimes%20%28&plus;2.3%20&plus;0.4%20-%200.4%20-0.7%29%20%3D%200.72%20%5Capprox%200.7)
+
+## Exercise 3.15
+
+*In the gridworld example, rewards are positive for goals, negative for running into the edge of the world, and zero the rest of the time. Are the signs of these rewards important, or only the intervals between them? Prove, using (3.8), that adding a constant ![equation](https://latex.codecogs.com/png.latex?%5Cinline%20c) to all the rewards adds a constant, ![equation](https://latex.codecogs.com/png.latex?v_%7Bc%7D) to the values of all states, and thus does not affect the relative values of any states under any policies. What is ![equation](https://latex.codecogs.com/png.latex?v_%7Bc%7D) in terms of ![equation](https://latex.codecogs.com/png.latex?%5Cinline%20c)and ![eqaution](https://latex.codecogs.com/png.latex?%5Cgamma)?*
+
+The signs of the rewards are not important. Only the intervals between the rewards are important.
+
+![equation](https://latex.codecogs.com/png.latex?G_%7Bt%7D%20%3D%20R_%7Bt&plus;1%7D%20&plus;%5Cgamma%20R_%7Bt&plus;2%7D%20&plus;%20%5Cgamma%5E%7B2%7D%20R_%7Bt&plus;3%7D%20&plus;%20%5Ccdots%20%3D%20%5Csum_%7Bk%3D0%7D%5E%7B%5Cinfty%7D%5Cgamma%5E%7Bk%7DR_%7Bt&plus;k&plus;1%7D%5C%5C%20%5C%5C%20%5Ctextrm%7BAdding%20%7D%20c%20%5C%20%5Ctextrm%7Bto%20all%20the%20rewards%2C%7D%5C%5C%20G_%7Bt%7D%5E%7Bnew%7D%20%3D%20%28R_%7Bt&plus;1%7D%20&plus;%20c%29%20&plus;%5Cgamma%20%28R_%7Bt&plus;2%7D%20&plus;%20c%29%20&plus;%20%5Cgamma%5E%7B2%7D%20%28R_%7Bt&plus;3%7D%20&plus;%20c%29%20&plus;%20%5Ccdots%5C%5C%20G_%7Bt%7D%5E%7Bnew%7D%20%3D%20R_%7Bt&plus;1%7D%20&plus;%20c%20&plus;%5Cgamma%20R_%7Bt&plus;2%7D%20&plus;%20%5Cgamma%20c%20&plus;%20%5Cgamma%5E%7B2%7D%20R_%7Bt&plus;3%7D%20&plus;%20%5Cgamma%5E%7B2%7D%20c%20&plus;%20%5Ccdots%5C%5C%20G_%7Bt%7D%5E%7Bnew%7D%20%3D%20R_%7Bt&plus;1%7D%20&plus;%5Cgamma%20R_%7Bt&plus;2%7D%20&plus;%20%5Cgamma%5E%7B2%7D%20R_%7Bt&plus;3%7D%20&plus;%20%5Ccdots%20&plus;%20c%20&plus;%20%5Cgamma%20c%20&plus;%20%5Cgamma%5E%7B2%7Dc%20&plus;%20%5Ccdots%5C%5C%20G_%7Bt%7D%5E%7Bnew%7D%20%3D%20%5Csum_%7Bk%3D0%7D%5E%7B%5Cinfty%7D%5Cgamma%5E%7Bk%7DR_%7Bt&plus;k&plus;1%7D%20&plus;%20c%5Csum_%7Bk%3D0%7D%5E%7B%5Cinfty%7D%5Cgamma%5E%7Bk%7D%5C%5C%20G_%7Bt%7D%5E%7Bnew%7D%20%3D%20G_%7Bt%7D%20&plus;%20c%5Ctfrac%7B1%7D%7B1%20-%20%5Cgamma%7D%5C%5C%20%5C%5C%20%5CRightarrow%20G_%7Bt%7D%5E%7Bnew%7D%20%3D%20G_%7Bt%7D%5E%7Bold%7D%20&plus;%20%5Cfrac%7Bc%7D%7B1%20-%20%5Cgamma%7D%5C%5C%20%5C%5C%20%5Ctextrm%7BNow%20calculating%20the%20new%20value%20function%3A%7D%5C%5C%20v_c%28s%29%20%3D%20%5Cmathbb%7BE%7D%5BG_%7Bt%7D%5E%7Bnew%7D%20%7C%20S_%7Bt%7D%20%3D%20s%5D%5C%5C%20%7E%7E%7E%7E%7E%7E%7E%3D%20%5Cmathbb%7BE%7D%5BG_%7Bt%7D%5E%7Bold%7D%20&plus;%20%5Cfrac%7Bc%7D%7B1%20-%5Cgamma%7D%20%7C%20S_%7Bt%7D%20%3D%20s%5D%5C%5C%20%7E%7E%7E%7E%7E%7E%7E%3D%20%5Cmathbb%7BE%7D%5BG_%7Bt%7D%20%7C%20S_%7Bt%7D%20%3D%20s%5D%20&plus;%20%5Cmathbb%7BE%7D%5B%5Cfrac%7Bc%7D%7B1%20-%5Cgamma%7D%20%7C%20S_%7Bt%7D%20%3D%20s%5D%5C%5C%5C%5C%20%5CRightarrow%20v_%7Bc%7D%28s%29%3D%20v_%7B%5Cpi%7D%28s%29%20&plus;%20%5Cfrac%7Bc%7D%7B1%20-%5Cgamma%7D)
+
+## Exercise 3.16
+
+*Now consider adding a constant c to all the rewards in an episodic task, such as maze running. Would this have any effect, or would it leave the task unchanged as in the continuing task above? Why or why not? Give an example.*
+
+This would have an effect and change the problem. This is because a different value would be added to the value function of each state. In the case of a continuing task the same value gets added (due to the summation to infinity).
+
+## Exercise 3.17
+
+*What is the Bellman equation for action values, that is, for ![equation](https://latex.codecogs.com/png.latex?q_%7B%5Cpi%7D)? It must give the action value ![equation](https://latex.codecogs.com/png.latex?q_%7B%5Cpi%7D%28s%2C%20a%29) in terms of the action values, ![equation](https://latex.codecogs.com/png.latex?q_%7B%5Cpi%7D%28s%27%2C%20a%27%29), of possible successors to the state–action pair ![equation](https://latex.codecogs.com/png.latex?%28s%2C%20a%29). Hint: the backup diagram to the right corresponds to this equation. Show the sequence of equations analogous to (3.14), but for action values.*
+
+![equation](https://latex.codecogs.com/png.latex?q_%7B%5Cpi%7D%28s%2C%20a%29%20%3D%20%5Cmathbb%7BE%7D%5BG_%7Bt%7D%20%7C%20S_%7Bt%7D%20%3D%20s%2C%20A_%7Bt%7D%20%3D%20a%5D%5C%5C%20%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%7E%3D%20%5Cmathbb%7BE%7D%5BR_%7Bt&plus;1%7D%20&plus;%20%5Cgamma%20G_%7Bt%20&plus;%201%7D%20%7C%20S_%7Bt%7D%20%3D%20s%2C%20A_%7Bt%7D%20%3D%20a%5D%5C%5C%20%5C%5C%20%5Ctextrm%7BSimilar%20to%20the%20Bellman%20equation%2C%7D%5C%5C%20%5CRightarrow%20q_%7B%5Cpi%7D%28s%2C%20a%29%20%3D%20%5Cmathbb%7BE%7D%5BR_%7Bt&plus;1%7D%20&plus;%20%5Cgamma%20q_%7B%5Cpi%7D%28s%27%2C%20a%27%29%20%7C%20S_%7Bt%7D%20%3D%20s%2C%20A_%7Bt%7D%20%3D%20a%5D)
+
+## Exercise 3.18
+
+*The value of a state depends on the values of the actions possible in that state and on how likely each action is to be taken under the current policy. We can think of this in terms of a small backup diagram rooted at the state and considering each possible action:*
+
+*Give the equation corresponding to this intuition and diagram for the value at the root node, ![equation](https://latex.codecogs.com/png.latex?v_%7B%5Cpi%7D%28s%29), in terms of the value at the expected leaf node, ![equation](https://latex.codecogs.com/png.latex?q_%7B%5Cpi%7D%28s%2C%20a%29), given ![equation](https://latex.codecogs.com/png.latex?S_%7Bt%7D%20%3D%20s). This equation should include an expectation conditioned on following the policy, ![equation](https://latex.codecogs.com/png.latex?%5Cpi). Then give a second equation in which the expected value is written out explicitly in terms of ![equation](https://latex.codecogs.com/png.latex?%5Cpi%28a%7Cs%29) such that no expected value notation appears in the equation.*
+
+![equation](https://latex.codecogs.com/png.latex?v_%7B%5Cpi%7D%28s%29%20%3D%20%5Cmathbb%7BE_%7B%5Cpi%7D%7D%5Bq_%7B%5Cpi%7D%28a%2C%20s%29%5D)
+
+![equation](https://latex.codecogs.com/png.latex?v_%7B%5Cpi%7D%28s%29%20%3D%20%5Csum_%7Ba%20%5Cin%20A%28s%29%7D%5Cpi%28a%20%7C%20s%29q_%7B%5Cpi%7D%28a%2C%20s%29)
