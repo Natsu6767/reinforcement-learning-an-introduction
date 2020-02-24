@@ -52,6 +52,12 @@ If we take constant α for each time step, the expression becomes:
 
 
 
+## Exercise 2.5
+
+*Design and conduct an experiment to demonstrate the difficulties that sample-average methods have for non-stationary problems. Use a modified version of the 10-armed testbed in which all the* ![equation](https://latex.codecogs.com/png.latex?q_%7B*%7D%28a%29) *start out equal and then take independent random walks (say by adding a normally distributed increment with mean zero and standard deviation 0.01 to all the* ![equation](https://latex.codecogs.com/png.latex?q_%7B*%7D%28a%29) *on each step). Prepare plots like Figure 2.2 for an action value method using sample averages, incrementally computed, and another action-value method using a constant step-size parameter, ![equation](https://latex.codecogs.com/png.latex?%5Calpha) = 0.1. Use ![equation](https://latex.codecogs.com/png.latex?%5Cvarepsilon) = 0.1 and longer runs, say of 10,000 steps.*
+
+![Sample Average and Constant Step Size Comparison](./figures/sa_cs_comparisons_2.5.png)
+
 ## Exercise 2.6: Mysterious Spikes
 
 *The results shown in Figure 2.3 should be quite reliable because they are averages over 2000 individual, randomly chosen 10-armed bandit tasks. Why, then, are there oscillations and spikes in the early part of the curve for the optimistic method? In other words, what might make this method perform particularly better or worse, on average, on particular early steps?*
@@ -99,3 +105,9 @@ Since both actions have the same value estimates, any action can be selected and
 If we are told which case we are facing, it makes sense to always chose the action that gives the highest reward for each case. For Case A that would be Action 2 and for Case B that would be Action 1.
 
 The expected reward would then be: ![equation](https://latex.codecogs.com/png.latex?0.5\times0.2&space;&plus;&space;0.5\times0.9&space;=&space;0.55)
+
+## Exercise 2.11 (programming)
+
+*Make a figure analogous to Figure 2.6 for the non-stationary case outlined in Exercise 2.5. Include the constant-step-size "![equation](https://latex.codecogs.com/png.latex?%5Cvarepsilon)-greedy algorithm with ![equation](https://latex.codecogs.com/png.latex?%5Calpha) = 0.1. Use runs of 200,000 steps and, as a performance measure for each algorithm and parameter setting, use the average reward over the last 100,000 steps.*
+
+![Performance Plots](./figures/performance_plot_2.11.png)
